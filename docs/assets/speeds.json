@@ -1,10 +1,4 @@
 {
-  "A1_easy_few": {
-    "source_s": 32.0,
-    "speed": 0.91,
-    "out_s": 35.0,
-    "mb": 1.7
-  },
   "A2_medium_mixed": {
     "source_s": 72.3,
     "speed": 2.07,

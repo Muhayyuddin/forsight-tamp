@@ -28,28 +28,23 @@ and six language models (175 of 180 episodes). On a Franka Research 3 it succeed
 ## The ten scenarios
 
 All ten run in PyBullet with a Franka Research 3. Each clip shows the committed
-execution, from the initial scene to the goal.
+execution, from the initial scene to the goal; nine are shown below.
 
 <table>
 <tr>
-<td align="center"><img src="docs/assets/gifs/A1_easy_few.gif" width="260"><br><b>A1</b> · spacious packing</td>
 <td align="center"><img src="docs/assets/gifs/A2_medium_mixed.gif" width="260"><br><b>A2</b> · orientation-constrained packing</td>
 <td align="center"><img src="docs/assets/gifs/PKG5_six_exact_ycb_cans.gif" width="260"><br><b>PKG5</b> · six YCB cans</td>
+<td align="center"><img src="docs/assets/gifs/PUSH1_push_base_stack_cube.gif" width="260"><br><b>PUSH1</b> · push, then stack</td>
 </tr>
 <tr>
-<td align="center"><img src="docs/assets/gifs/PUSH1_push_base_stack_cube.gif" width="260"><br><b>PUSH1</b> · push, then stack</td>
 <td align="center"><img src="docs/assets/gifs/PUSH2_blocked_detour_push_stack.gif" width="260"><br><b>PUSH2</b> · detour push-stack</td>
 <td align="center"><img src="docs/assets/gifs/SHF2_medium_shelf.gif" width="260"><br><b>SHF2</b> · shelf placement</td>
+<td align="center"><img src="docs/assets/gifs/STK2_three_stack.gif" width="260"><br><b>STK2</b> · three-block tower</td>
 </tr>
 <tr>
-<td align="center"><img src="docs/assets/gifs/STK2_three_stack.gif" width="260"><br><b>STK2</b> · three-block tower</td>
 <td align="center"><img src="docs/assets/gifs/STK4_pyramid.gif" width="260"><br><b>STK4</b> · four-disk stack</td>
 <td align="center"><img src="docs/assets/gifs/TOH1_hanoi_3disk.gif" width="260"><br><b>TOH1</b> · Tower of Hanoi, 3 disks</td>
-</tr>
-<tr>
 <td align="center"><img src="docs/assets/gifs/TOH4_4DiskCylinder.gif" width="260"><br><b>TOH4</b> · Tower of Hanoi, 4 disks</td>
-<td></td>
-<td></td>
 </tr>
 </table>
 
