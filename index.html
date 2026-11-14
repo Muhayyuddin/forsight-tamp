@@ -395,7 +395,7 @@
   </p>
   <div class="video-grid">
     <div class="video-card">
-      <video data-src="assets/videos/real_packing.mp4" poster="assets/posters/real_packing.jpg" controls muted loop playsinline preload="none" aria-label="Real robot packing six YCB cans into a box"></video>
+      <video data-src="assets/videos/real_packing.mp4" poster="assets/posters/real_packing.jpg" autoplay muted loop playsinline controls preload="none" aria-label="Real robot packing six YCB cans into a box"></video>
       <div class="vcap">
         <div class="vtags"><span class="vtag ok">18/20 with rehearsal</span><span class="vtag" data-speed="real_packing"></span></div>
         YCB Object Packing
@@ -403,7 +403,7 @@
       </div>
     </div>
     <div class="video-card">
-      <video data-src="assets/videos/real_push_stack.mp4" poster="assets/posters/real_push_stack.jpg" controls muted loop playsinline preload="none" aria-label="Real robot pushing a base around an obstacle and stacking a cube on it"></video>
+      <video data-src="assets/videos/real_push_stack.mp4" poster="assets/posters/real_push_stack.jpg" autoplay muted loop playsinline controls preload="none" aria-label="Real robot pushing a base around an obstacle and stacking a cube on it"></video>
       <div class="vcap">
         <div class="vtags"><span class="vtag ok">17/20 with rehearsal</span><span class="vtag" data-speed="real_push_stack"></span></div>
         Obstacle-Aware Push-Stack
@@ -411,7 +411,7 @@
       </div>
     </div>
     <div class="video-card">
-      <video data-src="assets/videos/real_multizone.mp4" poster="assets/posters/real_multizone.jpg" controls muted loop playsinline preload="none" aria-label="Real robot pushing two crates into separate target zones"></video>
+      <video data-src="assets/videos/real_multizone.mp4" poster="assets/posters/real_multizone.jpg" autoplay muted loop playsinline controls preload="none" aria-label="Real robot pushing two crates into separate target zones"></video>
       <div class="vcap">
         <div class="vtags"><span class="vtag ok">17/20 with rehearsal</span><span class="vtag" data-speed="real_multizone"></span></div>
         Multi-Zone Pushing
@@ -666,7 +666,7 @@
     card.dataset.family = s.family;
     card.innerHTML = `
       <video data-src="assets/videos/${s.id}.mp4" poster="assets/posters/${s.id}.jpg"
-             controls muted loop playsinline preload="none" aria-label="${s.code}: ${s.name}"></video>
+             autoplay muted loop playsinline controls preload="none" aria-label="${s.code}: ${s.name}"></video>
       <div class="vcap">
         <div class="vtags"><span class="vtag code">${s.code}</span><span class="vtag ok">ForeSight ${s.fs}</span><span class="vtag">${s.act} primitives</span><span class="vtag" data-speed="${s.id}"></span></div>
         ${s.name}
@@ -692,17 +692,21 @@
   // ---------------- videos: load and play while visible ----------------
   const videos = document.querySelectorAll("video[data-src]");
   const load = v => { if (!v.getAttribute("src")) v.src = v.dataset.src; };
-  if ("IntersectionObserver" in window && !reduceMotion) {
+  const play = v => {
+    v.muted = true; v.defaultMuted = true; v.loop = true;
+    const p = v.play(); if (p && p.catch) p.catch(() => {});
+  };
+  if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver(entries => {
       for (const e of entries) {
         const v = e.target;
-        if (e.isIntersecting) { load(v); v.play().catch(() => {}); }
+        if (e.isIntersecting) { load(v); play(v); }
         else if (!v.paused) v.pause();
       }
-    }, { threshold: 0.35 });
+    }, { threshold: 0.25, rootMargin: "200px 0px" });
     videos.forEach(v => io.observe(v));
   } else {
-    videos.forEach(v => { v.preload = "metadata"; load(v); });
+    videos.forEach(v => { load(v); play(v); });
   }
 
   // ---------------- charts ----------------
