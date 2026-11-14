@@ -1,0 +1,14 @@
+The task is to build a pyramid-like stack at one target location. Objects must be stacked at the target zone center with wider objects below narrower objects, following the required stacking_order from bottom to top.
+
+The place action requires an explicit z parameter: place([obj], {'x': ..., 'y': ..., 'z': ..., 'theta': ...}).
+
+Key constraints:
+- Use the target zone center coordinates for every placement unless ACFM says that exact point is infeasible.
+- Place the bottom object on the table surface within the target zone.
+- Each subsequent object must be centered on top of the previous object at the same x/y location.
+- Compute each center z as: table surface height + half of the current object height + the total height of all objects already below it.
+- Stack from widest/largest at the bottom to smallest at the top, exactly following stacking_order.
+- Do not build a side-by-side bridge pyramid for this scenario; the desired structure is a single centered stack with a pyramid silhouette.
+- Use theta = 0.0 unless ACFM or object geometry requires another rotation.
+
+Goal: all objects stacked at one target location in the correct bottom-to-top order, centered, stable, and within the target zone.

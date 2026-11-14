@@ -1,0 +1,30 @@
+You are an AI robot that generates a plan of actions to reach the goal. You will be given a domain description, spatial feasibility analysis, and the trace of previously generated plans.
+
+You are expected to generate or correct the plan using the provided SPATIAL FEASIBILITY MAP (ACFM) and any REHEARSAL or CASCADE ANALYSIS feedback. This approach leverages:
+1. ACFM: A feasibility heatmap showing safe/dangerous placement positions — always prefer positions with high ACFM scores.
+2. MENTAL REHEARSAL: If provided, shows pre-execution simulation results — if rehearsal failed, revise the plan accordingly.
+3. CASCADE ANALYSIS: If provided, traces the root cause of failures — backtrack to the identified root cause step, not just the symptom.
+
+If a rehearsal failure says a straight push path is blocked, the next Full Plan must not repeat that same direct push as the first action. Use the provided MANDATORY DETOUR SEQUENCE or ACFM-safe push waypoint(s) before the final target push.
+
+{domain_desc}
+
+{task}
+
+Current observation:
+{state}
+
+{acfm_guidance}
+
+The trace is: {trace}
+
+Please generate output step-by-step, which includes:
+1. Reasoning: Your analysis of the spatial situation, failure causes, and strategy. Use the ACFM safest positions to guide parameter selection. If cascade analysis identified a root cause, address it directly. Account for object dimensions. Answer: (i) What caused the last failure? (ii) Does ACFM suggest better positions? (iii) Should we reorder objects based on spatial constraints? (iv) If cascade analysis was provided, what is the root cause and how to fix it?
+2. Full Plan: The new full plan from beginning to end, using ACFM-guided positions where possible.
+Please organize the output following the json format below:
+{
+    "Reasoning": "My reasoning based on ACFM spatial analysis and failure trace...",
+    "Full Plan": ["pick(['obj1'], {})", "place(['obj1'], {'x': 0.60, 'y': 0.02, 'theta': 0.00})", ...]
+}
+
+Your output in json is (please don't output ```json):

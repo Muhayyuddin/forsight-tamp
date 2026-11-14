@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+dist/
+build/
+
+# Virtual environments
+venv/
+.venv/
+
+# Credentials
+openai_keys/*.json
+.env
+.env.*
+
+# Run outputs
+results/
+videos/
+visualization/
+*.log
+
+# Editors and OS
+*.swp
+*~
+.DS_Store
+Thumbs.db

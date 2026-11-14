@@ -1,0 +1,12 @@
+The task is to pack all the boxes into the basket. Each box must be placed inside the basket so that its entire bounding box lies within the basket boundaries. The robot must pick each box from the table and place it into the basket at a valid (x, y) position with rotation theta.
+
+Key constraints:
+- Every box must fit entirely within the basket (no overhang).
+- Boxes must not overlap with each other after placement.
+- Consider box dimensions when choosing placement positions — larger boxes should typically be placed first to leave room for smaller ones.
+- For repeated same-size cans or boxes, use a grid packing strategy: compute or follow evenly spaced row/column centers from the basket inner bounds and the object footprint, then verify that every object center is at least one object footprint apart from neighboring centers and at least half a footprint inside each wall.
+- When a GLOBAL PACKING SLOT STRATEGY is provided, treat it as the authoritative structured slot table computed from the container size and object footprint. Copy the assigned slot coordinates exactly into the Full Plan, use each slot once, preserve the listed order, and ignore locally high ACFM cells outside the slot table.
+- Use the basket's x and y ranges to determine valid placement regions.
+- The z coordinate is handled automatically (place on the basket floor).
+
+Goal: All boxes are inside the basket with no collisions or overhangs.

@@ -1,0 +1,58 @@
+The task is the classic Tower of Hanoi puzzle. You have THREE pegs and N disks of different sizes.
+
+SETUP:
+- Peg A (source): all disks start here, largest at bottom, smallest on top.
+- Peg B (auxiliary): empty, used as intermediate.
+- Peg C (goal): must have all disks at the end, largest at bottom.
+
+STRICT RULES (violation = failure):
+1. You may only pick the TOP disk of any peg.
+2. You MUST NEVER place a larger disk on top of a smaller disk.
+3. Each pick-place pair moves exactly one disk.
+4. A previous trace is only a failed attempt unless the Current observation shows that move in the peg states. Always plan from the Current observation, not from the trace.
+5. The Full Plan must solve the entire puzzle from the Current observation. Do not output only the next one or two moves.
+
+COORDINATE RULES (CRITICAL):
+- The "Current observation:" section lists each peg's exact (x, y).
+- For each place action, use the EXACT x and y of the TARGET peg — NEVER invent coordinates.
+- Do NOT worry about z — the environment computes the correct stacking height automatically. Set z=0.019.
+- Always set theta=0.0.
+- Use only the EXACT disk names listed in the current observation. Disk names vary with the number of disks, so never copy a name from an example or another scenario.
+
+ALGORITHM for 3 disks (A→C using B as auxiliary) — 7 moves:
+  Move 1: pick [smallest disk]  → place on peg C
+  Move 2: pick [middle disk]    → place on peg B
+  Move 3: pick [smallest disk]  → place on peg B
+  Move 4: pick [largest disk]   → place on peg C
+  Move 5: pick [smallest disk]  → place on peg A
+  Move 6: pick [middle disk]    → place on peg C
+  Move 7: pick [smallest disk]  → place on peg C   ← DONE
+
+ALGORITHM for 4 disks (A→C using B) — 15 moves:
+  Labels: S=smallest, M=medium, L=large, XL=largest (XL is at bottom, S is on top).
+  Move  1: pick S  → place on peg B
+  Move  2: pick M  → place on peg C
+  Move  3: pick S  → place on peg C
+  Move  4: pick L  → place on peg B
+  Move  5: pick S  → place on peg A
+  Move  6: pick M  → place on peg B
+  Move  7: pick S  → place on peg B
+  Move  8: pick XL → place on peg C   ← XL goes to goal ALONE first
+  Move  9: pick S  → place on peg C
+  Move 10: pick M  → place on peg A
+  Move 11: pick S  → place on peg A
+  Move 12: pick L  → place on peg C
+  Move 13: pick S  → place on peg B
+  Move 14: pick M  → place on peg C
+  Move 15: pick S  → place on peg C   ← DONE
+  
+  NOTE: The largest disk (XL) goes to peg C as the 8th move, alone, as the base.
+        Never place a larger disk on top of a smaller one.
+
+DISK IDENTIFICATION:
+- The observation lists disks from largest to smallest.
+- For a 3-disk scene, map largest/middle/smallest to the first/second/third listed names.
+- For a 4-disk scene, map XL/L/M/S to the first/second/third/fourth listed names.
+
+IMPORTANT: Derive every disk name and peg coordinate from the current observation.
+Output full plan as JSON with "Reasoning" and "Full Plan" keys.

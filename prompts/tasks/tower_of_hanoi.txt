@@ -1,0 +1,14 @@
+The task is to solve a Tower of Hanoi problem. There are disks of different sizes that must be stacked in a specific order: largest disk at the bottom, smallest at the top. All disks must be placed within the target zone on the table.
+
+The place action requires an explicit z parameter: place([obj], {'x': ..., 'y': ..., 'z': ..., 'theta': ...}).
+
+Key constraints:
+- Stack the disks in size order: largest (bottom) to smallest (top).
+- The largest disk goes on the table surface first (z ≈ 0.01-0.02).
+- Each subsequent disk must be smaller than the one below it.
+- Compute z for each disk as the cumulative height of all disks already placed.
+- All disks must share the same (x, y) center — use the target zone center.
+- A larger disk must NEVER be placed on top of a smaller disk.
+- Theta should be 0 for all placements (disks are symmetric).
+
+Goal: All disks stacked largest-to-smallest (bottom-to-top), centered in the target zone.

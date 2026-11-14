@@ -1,0 +1,119 @@
+{
+  "scenario_id": "SHF2_medium_shelf",
+  "scenario_name": "Shelf: 5 mixed objects onto 3-level shelf",
+  "env_type": "shelf",
+  "shelf_config": {
+    "x": 0.4,
+    "y": 0.2,
+    "width": 0.52,
+    "depth": 0.18,
+    "wall_thickness": 0.01,
+    "levels": [
+      {
+        "z": 0.04,
+        "label": "bottom",
+        "objects": [
+          "shelf_tall_box"
+        ]
+      },
+      {
+        "z": 0.2,
+        "label": "middle",
+        "objects": [
+          "shelf_slim_box",
+          "shelf_cube"
+        ]
+      },
+      {
+        "z": 0.36,
+        "label": "top",
+        "objects": [
+          "shelf_wide_box",
+          "shelf_short_box"
+        ]
+      }
+    ]
+  },
+  "boxes": {
+    "0": {
+      "name": "shelf_tall_box",
+      "color": [
+        0.82,
+        0.27,
+        0.27,
+        1.0
+      ],
+      "w": 0.05,
+      "l": 0.05,
+      "h": 0.105,
+      "x": 0.3,
+      "y": -0.3,
+      "z": 0.065
+    },
+    "1": {
+      "name": "shelf_wide_box",
+      "color": [
+        0.36,
+        0.49,
+        1.0,
+        1.0
+      ],
+      "w": 0.07,
+      "l": 0.05,
+      "h": 0.065,
+      "x": 0.3,
+      "y": -0.06,
+      "z": 0.06
+    },
+    "2": {
+      "name": "shelf_slim_box",
+      "color": [
+        0.0,
+        0.85,
+        0.0,
+        1.0
+      ],
+      "w": 0.045,
+      "l": 0.045,
+      "h": 0.085,
+      "x": 0.3,
+      "y": -0.22,
+      "z": 0.06
+    },
+    "3": {
+      "name": "shelf_cube",
+      "color": [
+        1.0,
+        0.78,
+        0.2,
+        1.0
+      ],
+      "w": 0.055,
+      "l": 0.055,
+      "h": 0.07,
+      "x": 0.3,
+      "y": -0.14,
+      "z": 0.06
+    },
+    "4": {
+      "name": "shelf_short_box",
+      "color": [
+        0.3,
+        0.88,
+        0.88,
+        1.0
+      ],
+      "w": 0.06,
+      "l": 0.05,
+      "h": 0.065,
+      "x": 0.3,
+      "y": 0.02,
+      "z": 0.06
+    }
+  },
+  "difficulty": "medium",
+  "disturbance": null,
+  "episodes": 1,
+  "expected_tests": "Medium shelf placement. 3 levels with mixed-size side-grasp blocks. Tall objects must go on the bottom level. ACFM must detect height clearance constraints per level and must separate the two objects sharing a level far enough in x that the hand clears the already-placed neighbour. The source objects form a single depth-ordered column, so each front object must be cleared before the one behind it can be side-grasped.",
+  "task": "place_on_shelf"
+}

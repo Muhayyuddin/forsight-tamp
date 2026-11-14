@@ -1,0 +1,80 @@
+{
+  "A1_easy_few": {
+    "source_s": 32.0,
+    "speed": 0.91,
+    "out_s": 35.0,
+    "mb": 1.7
+  },
+  "A2_medium_mixed": {
+    "source_s": 72.3,
+    "speed": 2.07,
+    "out_s": 35.0,
+    "mb": 1.9
+  },
+  "PKG5_six_exact_ycb_cans": {
+    "source_s": 73.0,
+    "speed": 2.08,
+    "out_s": 35.0,
+    "mb": 2.1
+  },
+  "PUSH1_push_base_stack_cube": {
+    "source_s": 49.0,
+    "speed": 1.4,
+    "out_s": 35.0,
+    "mb": 1.7
+  },
+  "PUSH2_blocked_detour_push_stack": {
+    "source_s": 108.3,
+    "speed": 3.09,
+    "out_s": 35.0,
+    "mb": 2.0
+  },
+  "SHF2_medium_shelf": {
+    "source_s": 59.1,
+    "speed": 1.69,
+    "out_s": 35.0,
+    "mb": 2.3
+  },
+  "STK2_three_stack": {
+    "source_s": 30.2,
+    "speed": 0.86,
+    "out_s": 35.0,
+    "mb": 1.6
+  },
+  "STK4_pyramid": {
+    "source_s": 40.0,
+    "speed": 1.14,
+    "out_s": 35.0,
+    "mb": 1.8
+  },
+  "TOH1_hanoi_3disk": {
+    "source_s": 60.1,
+    "speed": 1.72,
+    "out_s": 35.0,
+    "mb": 2.1
+  },
+  "TOH4_4DiskCylinder": {
+    "source_s": 119.7,
+    "speed": 3.42,
+    "out_s": 35.0,
+    "mb": 2.5
+  },
+  "real_packing": {
+    "source_s": 565.3,
+    "speed": 14.13,
+    "out_s": 40.0,
+    "mb": 9.3
+  },
+  "real_push_stack": {
+    "source_s": 101.5,
+    "speed": 2.54,
+    "out_s": 40.0,
+    "mb": 8.1
+  },
+  "real_multizone": {
+    "source_s": 136.8,
+    "speed": 3.42,
+    "out_s": 40.0,
+    "mb": 11.1
+  }
+}

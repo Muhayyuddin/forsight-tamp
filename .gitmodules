@@ -1,0 +1,3 @@
+[submodule "assets/ycb_objects"]
+	path = assets/ycb_objects
+	url = https://github.com/kwonathan/ycb_urdfs.git
