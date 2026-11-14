@@ -215,6 +215,8 @@
     .video-card { background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); min-width: 0; }
     .video-card video { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #000; }
     .video-card.sim video { aspect-ratio: 4 / 3; }
+    .feature-video { max-width: min(100%, 1100px); margin: 0 auto; }
+    .feature-video video { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; }
     .vcap { padding: 10px 14px 13px; font-size: .9rem; font-weight: 600; color: var(--text); }
     .vcap small { display: block; font-weight: 400; color: var(--text-3); font-size: .82rem; margin-top: 2px; line-height: 1.5; }
     .vtags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
@@ -330,6 +332,7 @@
     </a>
   </div>
   <nav aria-label="Sections">
+    <a href="#video">Video</a>
     <a href="#overview">Overview</a>
     <a href="#robot-real">Real Robot</a>
     <a href="#robot-sim">Simulation</a>
@@ -340,6 +343,18 @@
 </header>
 
 <main>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!--  VIDEO                                                         -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section id="video">
+  <h2>Video</h2>
+  <div class="video-card feature-video">
+    <video src="assets/videos/ForeSight-TAMP_video.mp4" poster="assets/posters/ForeSight-TAMP_video.jpg"
+           controls playsinline preload="metadata"
+           aria-label="ForeSight-TAMP video: the problem, the method, and the simulated and real-robot results"></video>
+  </div>
+</section>
 
 <!-- ══════════════════════════════════════════════════════════════ -->
 <!--  OVERVIEW                                                      -->
@@ -636,7 +651,7 @@
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // Playback speed of each clip relative to its recording (from assets/speeds.json).
-  const SPEEDS = { "A1_easy_few": 0.91, "A2_medium_mixed": 2.07, "PKG5_six_exact_ycb_cans": 2.08, "PUSH1_push_base_stack_cube": 1.4, "PUSH2_blocked_detour_push_stack": 3.09, "SHF2_medium_shelf": 1.69, "STK2_three_stack": 0.86, "STK4_pyramid": 1.14, "TOH1_hanoi_3disk": 1.72, "TOH4_4DiskCylinder": 3.42, "real_packing": 14.13, "real_push_stack": 2.54, "real_multizone": 3.42 };
+  const SPEEDS = { "A2_medium_mixed": 2.07, "PKG5_six_exact_ycb_cans": 2.08, "PUSH1_push_base_stack_cube": 1.4, "PUSH2_blocked_detour_push_stack": 3.09, "SHF2_medium_shelf": 1.69, "STK2_three_stack": 0.86, "STK4_pyramid": 1.14, "TOH1_hanoi_3disk": 1.72, "TOH4_4DiskCylinder": 3.42, "real_packing": 14.13, "real_push_stack": 2.54, "real_multizone": 3.42 };
 
   // ---------------- simulation scenarios ----------------
   const SCENARIOS = [
