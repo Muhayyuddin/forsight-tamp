@@ -216,7 +216,15 @@
     .video-card video { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #000; }
     .video-card.sim video { aspect-ratio: 4 / 3; }
     .feature-video { max-width: min(100%, 1100px); margin: 0 auto; }
+    .feature-video { position: relative; }
     .feature-video video { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; }
+    .unmute {
+      position: absolute; top: 14px; right: 14px; display: inline-flex; align-items: center; gap: 8px;
+      font: inherit; font-size: .85rem; font-weight: 700; padding: 7px 16px; border-radius: 20px; border: 0; cursor: pointer;
+      background: #e8962a; color: #1b1205; box-shadow: 0 4px 14px rgba(0, 0, 0, .3);
+    }
+    .unmute svg { width: 16px; height: 16px; }
+    .unmute:hover { filter: brightness(1.08); }
     .vcap { padding: 10px 14px 13px; font-size: .9rem; font-weight: 600; color: var(--text); }
     .vcap small { display: block; font-weight: 400; color: var(--text-3); font-size: .82rem; margin-top: 2px; line-height: 1.5; }
     .vtags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
@@ -350,9 +358,13 @@
 <section id="video">
   <h2>Video</h2>
   <div class="video-card feature-video">
-    <video src="assets/videos/ForeSight-TAMP_video.mp4" poster="assets/posters/ForeSight-TAMP_video.jpg"
-           controls playsinline preload="metadata"
+    <video id="featureVideo" src="assets/videos/ForeSight-TAMP_video.mp4" poster="assets/posters/ForeSight-TAMP_video.jpg"
+           autoplay muted playsinline controls preload="auto"
            aria-label="ForeSight-TAMP video: the problem, the method, and the simulated and real-robot results"></video>
+    <button class="unmute" id="unmuteBtn" type="button" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>
+      Turn on sound
+    </button>
   </div>
 </section>
 
@@ -723,6 +735,23 @@
   } else {
     videos.forEach(v => { load(v); play(v); });
   }
+
+  // ---------------- main video: autoplay muted on open, sound on request ----------------
+  (function featureVideo() {
+    const v = document.getElementById("featureVideo");
+    const btn = document.getElementById("unmuteBtn");
+    v.muted = true; v.defaultMuted = true;
+    const sync = () => { btn.hidden = !v.muted; };
+    const p = v.play(); if (p && p.catch) p.catch(() => {});
+    sync();
+    btn.addEventListener("click", () => {
+      v.muted = false; v.volume = 1;
+      if (v.ended || v.currentTime > 0.5) v.currentTime = 0;
+      const q = v.play(); if (q && q.catch) q.catch(() => {});
+      sync();
+    });
+    v.addEventListener("volumechange", sync);
+  })();
 
   // ---------------- charts ----------------
   const tip = document.getElementById("tip");
