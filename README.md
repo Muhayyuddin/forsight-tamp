@@ -6,10 +6,6 @@ Muhayy Ud Din, Mughni Irfan, Ahmed Nader, Lakmal Seneviratne, Irfan Hussain
 
 [Project page](https://muhayyuddin.github.io/forsight-tamp/) · [Paper (PDF)](docs/assets/ForeSight-TAMP.pdf)
 
-<p align="center">
-  <img src="docs/assets/figures/teaser.webp" width="640" alt="ForeSight-TAMP overview">
-</p>
-
 A large language model (LLM) writes the complete task plan. For every action, an
 **action-conditioned feasibility map (ACFM)** generates candidate parameters in the
 state the earlier actions leave, rejects infeasible ones with hard masks (bounds,
