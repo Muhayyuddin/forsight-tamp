@@ -1,8 +1,0 @@
-The tabletop environment has a robot arm and THREE pegs (A, B, C) with colored zone markers on the table. The robot sits at (0, 0) and faces the positive x-axis. Positive z-axis points up.
-
-The robot has the following primitive actions:
-- pick([obj], {}): pick up obj (no parameters). Only the TOP disk of a peg may be picked.
-- place([obj], {"x": [0.00, 1.00], "y": [-1.00, 1.00], "z": [0.00, 0.50], "theta": [-3.14, 3.14]}): place obj at position (x, y, z) with rotation theta. You MUST use the exact peg (x, y) coordinates shown in the observation and the 'next place z' value for that peg. NEVER invent coordinates.
-
-Current observation:
-{state}
